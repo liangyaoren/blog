@@ -1,0 +1,300 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+    font-family: Microsoft YaHei;
+    background-color: #efefef;
+}
+
+a{
+	text-decoration:none;
+}
+
+.header-wrap {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #ffc;
+    border-radius: 5px;
+    overflow:auto;
+    margin-top: 10px;
+}
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+.header-wrap .logo {
+    padding: 10px 0 10px;
+}
+
+.saying{
+	text-align: right;
+	padding: 0 10px 10px 0;
+}
+
+.sign .sign_ul{
+	list-style-type: none;
+	padding: 60px 10px 0 0;
+}
+
+.sign .sign_ul .sign_content{
+	padding-right: 60px;
+}
+
+.sign .sign_ul .sign_author{
+	text-align: right;
+}
+
+.nav-wrap{
+	width: 1000px;
+    margin: 0 auto;
+    border-radius: 5px;
+    height: 50px;
+    background: #6cc;
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px #bdbdbd;
+}
+
+.nav-wrap ul{
+	list-style-type: none;
+}
+
+.nav-wrap ul li a:hover {
+    background: #f15694;
+    border-radius: 5px;
+    width: 247px;
+}
+
+.nav-wrap ul li {
+    width: 247px;
+    height: 50px;
+    float: left;
+    text-align: center;
+    margin-right: 3px;
+    line-height: 50px;
+    padding-left:0 
+}
+
+.nav-wrap ul li a{
+    border-radius: 5px;
+    color: #fff;
+    width: 247px;
+    height: 50px;
+    display: block;
+}
+
+.position{
+	width: 1000px;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.main{
+	width: 1000px;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.main_content{
+	width: 688px;
+	margin-right: 10px;
+	/* overflow: auto; */
+}
+
+.main_sign{
+	width: 300px;
+}
+
+.main_content ul{
+	list-style-type: none;
+}
+
+.main_content .blog_list li{
+	background: white;
+	margin-bottom: 15px;
+	display: block;
+	overflow:auto;
+}
+
+.main_content .pager li{
+	float: left;
+    height: 35px;
+    width:40px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 3px;
+    border: solid 1px #efefef;
+    font-size: 12px;
+}
+
+.main_content .pager .active{
+	background: #337AB7;
+}
+
+.main_content .pager a{
+	display: block;
+	height: 35px;
+    width:40px;
+}
+
+.main_content .blogImg{
+	padding: 10px;
+}
+
+.main_content .blog{
+	padding: 10px;;
+}
+
+.blog h3{
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.blog .blog_count{
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #919898;
+}
+
+.blog p{
+	font-size: 14px;
+	color: #526163;
+}
+
+.blog a:HOVER{
+	text-decoration:underline;
+}
+
+.sign_box,.recommend_box{
+	background: white;
+	margin-bottom: 15px;
+	overflow:auto;
+}
+
+.main_sign .sign_box .search_input{
+	margin: 0 auto;
+	text-align: center;
+	padding: 25px 0 25px;
+	position: relative;
+}
+.sign_box .search_input .search_value{
+	width: 200px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #556566;
+    outline: none;
+    padding-left: 20px;
+}
+.sign_box .search_input .search_btn{
+	position: absolute;
+	background-image: url('../images/search.png');
+	width: 23px;
+    height: 23px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    top:30px;
+    right:45px;
+}
+
+.sign_box ul,.recommend_box ul{
+	display:block;
+	padding: 5px 0 5px 50px;
+	list-style-type: none;
+}
+
+.sign_box h3{
+	display:block;
+	font-size:16px;
+	padding: 5px 0 5px 5px;
+	margin-bottom: 5px;
+}
+
+.sign_box ul li{
+	margin-bottom: 15px;
+}
+
+.recommend_box a{
+	color: #9CBC4C;
+	font-size: 14px;
+}
+
+.recommend_box a:HOVER{
+	text-decoration: underline;
+}
+	
+.sign_box a{
+	font-size: 14px;
+}
+
+.main_content .blog_sign,.main_content .blog_title{
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.blog_sign{
+	font-size: 14px;
+    color: #919898;
+}
+
+.blog_content{
+	font-size: 14px;
+    color: #526163;
+}
+
+.main_content .blog_info{
+	background: white;
+	padding: 10px;
+}
+
+.main .blog_info .blog_keyWord{
+	margin: 20px 0;
+	font-style: oblique;
+}
+
+.main .blog_info .last_blog, .main .blog_info .next_blog{
+	font-size: 14px;
+}
+
+.main .blog_info .last_blog, .main .blog_info .next_blog{
+	font-size: 14px;
+}
+
+.blog_info a:HOVER{
+	text-decoration: underline;
+}
+
+.search_title{
+	background: #EC971F;
+}
+
+.search_title p{
+	padding: 31px 0;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.search_li{
+	padding: 0 0 10px 10px;
+}
+
+.search_li *{
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.search_li a:HOVER {
+	text-decoration: underline;
+}
+
+.aboutBlogger{
+	padding: 15px;
+	background: white;
+}

@@ -1,0 +1,99 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	/*background-color: #f7f7f7;*/
+	position: relative;
+	margin: 0px;
+	font-size: 13px;
+	padding: 0px;
+	/*-webkit-font-smoothing: antialiased;*/
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0;
+	line-height: inherit;
+	color: #29323d;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small {
+	margin-left: 15px;
+	font-style: italic;
+}
+
+.header {
+	margin-bottom: 30px;
+}
+
+.header h1, .header h2, .header h3, .header h4, .header h5 {
+	float: left;
+	margin-top: 5px;
+}
+
+.footer {
+	text-align: center;
+	margin: 40px 0;
+}
+
+#pad-wrapper {
+	padding: 0px 50px;
+	margin-top: 20px;
+}
+
+#pad-wrapper h4 {
+	color: #696d73;
+	font-style: italic;
+}
+
+.content {
+	min-width: 400px;
+	/*min-height: 620px;
+  margin-bottom: 100px;
+  padding-bottom: 50px;
+  */
+	overflow: hidden;
+	position: relative;
+	background: #fff;
+	margin-left: 178px;
+	border-left: 1px solid #dae3e9;
+	border-bottom: 1px solid #dae3e9;
+	box-shadow: -3px 3px 3px -2px #f1f1f3;
+	border-radius: 0px 0px 0px 5px;
+	-webkit-transition: margin-left .3s ease;
+	-moz-transition: margin-left .3s ease;
+	-o-transition: margin-left .3s ease;
+	-ms-transition: margin-left .3s ease;
+	transition: margin-left .3s ease;
+	/* starts skins changer */
+	/* end skin changer*/
+}
+
+.content-inner {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-shadow: none;
+}
+
+
+table .actions {
+	text-align: right;
+}
+
+table .actions a {
+	display: inline-block;
+	white-space: nowrap;
+	margin: 1px 2px;
+}
+
+select.short {
+	width: 120px;
+}
+
+@media ( max-width : 768px) {
+	#pad-wrapper {
+		padding: 0px 15px;
+	}
+	.content {
+		min-width: 0px;
+		margin: 0;
+	}
+}

@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!-- bootstrap -->
+<link href="${base}/static/css/bootstrap/bootstrap.css" rel="stylesheet" />
+<link href="${base}/static/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+
+<!-- global styles -->
+<link rel="stylesheet" type="text/css" href="${base}/static/css/compiled/layout.css" />
+<link rel="stylesheet" type="text/css" href="${base}/static/css/compiled/elements.css" />
+<link rel="stylesheet" type="text/css" href="${base}/static/css/compiled/icons.css" />
+
+<!-- libraries -->
+<link href="${base}/static/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+
+<!-- this page specific styles -->
+<link rel="stylesheet" href="${base}/static/css/compiled/tables.css" type="text/css" media="screen" />
+
+<!-- open sans font -->
+<link href="${base}/static/css/openSansFont.css" rel="stylesheet"
+	type="text/css" />
+<!-- lato font -->
+<link href="${base}/static/css/latoFont.css" rel="stylesheet"
+	type="text/css" />
+<!-- layer -->
+<link href="${base}/static/plug/layer-v2.4/skin/layer.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="${base}/static/js/html5shiv.min.js"></script>
+<![endif]-->
