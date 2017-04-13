@@ -8,7 +8,7 @@
 	    <welcome-file>index.jsp</welcome-file>  
 	</welcome-file-list>
 	
-	<display-name>myBlog</display-name>
+	<display-name>blog</display-name>
 	
 	<listener>  
 	   <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>  
