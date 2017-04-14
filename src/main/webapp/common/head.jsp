@@ -8,12 +8,6 @@
 	<div class="saying">
 		梦想还是要有的，万一实现了呢
 	</div>
-	<!-- <div class="sign fr">
-		<ul class="sign_ul">
-			<li class="sign_content">梦想还是要有的，万一实现了呢</li>
-			<li class="sign_author">---yaoren</li>
-		</ul>
-	</div> -->
 </header>
 <nav class="nav-wrap">
 	<ul>
