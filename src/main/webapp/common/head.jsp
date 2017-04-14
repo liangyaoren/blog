@@ -14,6 +14,7 @@
 		<li class="active">
 			<a href="${base}/index">首页</a>
 		</li>
+
 		<li>
 			<a href="javascript:void(0)" onclick="aboutBlogger()">关于博主</a>
 		</li>
