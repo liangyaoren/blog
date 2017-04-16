@@ -1,0 +1,10 @@
+body{
+    font-family: Microsoft YaHei;
+    background-color: #efefef;
+}
+
+.nav-bar a{
+    font-size: 14px;
+    line-height: 3;
+    color: #636363;
+}
