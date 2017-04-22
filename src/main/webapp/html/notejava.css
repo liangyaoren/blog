@@ -28,13 +28,6 @@ a {
     color: #556566;
     outline: none;
     padding-left: 20px;
-    /*width: 210px;
-    height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #556566;
-    outline: none;
-    padding-left: 30px;*/
 }
 
 .search_btn{
@@ -42,12 +35,4 @@ a {
     border-radius: 5px;
     width: 100%;
     height: 30px;
-    /*position: absolute;
-    background-image: url('/static/images/search.png');
-    width: 23px;
-    height: 23px;
-    border: none;
-    background-color: white;
-    top: 36%;
-    right: 11%;*/
 }
