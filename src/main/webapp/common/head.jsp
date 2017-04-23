@@ -43,7 +43,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="${base}/blogger/info">关于博主</a></li>
                     <li><a href="/common/aboutSite.jsp">关于本站</a></li>
-                    <li><a href="#">留言板</a></li>
+                    <li><a href="/common/messageBoard.jsp">留言板</a></li>
                 </ul>
                 <form class="navbar-form navbar-right" action="${base}/search" onsubmit="return checkForm()">
                     <div class="form-group">
