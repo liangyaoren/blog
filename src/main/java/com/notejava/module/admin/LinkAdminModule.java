@@ -39,7 +39,8 @@ public class LinkAdminModule {
 		List<Link> links = dao.query(Link.class, Cnd.orderBy().desc("orderNo"),pager);
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("links", links);
-		resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
+		//resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
+		resultMap.put("pageBar", PageUtil.getPageMap(pager.getPageNumber(), pager.getPageSize(), count));
 		return resultMap;
 	}
 	

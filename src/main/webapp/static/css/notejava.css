@@ -1,0 +1,20 @@
+body {
+    font-family: Microsoft YaHei;
+    background-color: #efefef;
+}
+
+.container {
+    background-color: white;
+    padding:10px 25px;
+}
+
+.blog_list {
+    border-bottom: 4px double#E5E5E5;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.blog_classify{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}

@@ -1,7 +1,43 @@
 package com.notejava.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PageUtil {
-	public static String getPageBar(int pageNo,int pageSize,int total){
+
+	public static Map<String,Integer> getPageMap(int pageNo,int pageSize,int total){
+		int pageCount = 0;
+		int beginIndex = 0;
+		int endIndex = 0;
+		pageCount = (total + pageSize - 1)/pageSize;
+
+		if(pageCount<5){
+			beginIndex = 1;
+			endIndex = pageCount;
+		}else{
+			beginIndex = pageNo-2;
+			endIndex = pageNo+3;
+			//如果首页小于1
+			if(beginIndex < 1){
+				beginIndex = 1;
+				endIndex = 5;
+			}
+			//如果尾页超过总页数
+			if(endIndex > pageCount){
+				beginIndex = endIndex-4;
+				endIndex = pageCount;
+			}
+		}
+
+		Map<String,Integer> pageMap = new HashMap<>();
+		pageMap.put("beginIndex", beginIndex);
+		pageMap.put("endIndex", endIndex);
+		pageMap.put("pageCount", endIndex);
+		pageMap.put("currentPage", pageNo);
+		return pageMap;
+	}
+
+	/*public static String getPageBar(int pageNo,int pageSize,int total){
 		int pageCount = 0;
 		int beginIndex = 0;
 		int endIndex = 0;
@@ -102,5 +138,5 @@ public class PageUtil {
 	public static void main(String[] args) {
 		String pageBar = getPageBar(11,11,1000);
 		System.out.println(pageBar);
-	}
+	}*/
 }

@@ -1,14 +1,9 @@
 package com.notejava.module.web;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-
+import com.notejava.bean.Blog;
+import com.notejava.lucene.BlogIndex;
+import com.notejava.utils.PageUtil;
+import com.notejava.utils.ParamsUtil;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -26,10 +21,13 @@ import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
 
-import com.notejava.bean.Blog;
-import com.notejava.lucene.BlogIndex;
-import com.notejava.utils.PageUtil;
-import com.notejava.utils.ParamsUtil;
+import javax.servlet.ServletContext;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @IocBean
 public class IndexModule {
@@ -96,7 +94,7 @@ public class IndexModule {
 			blogMap.put("id", blog.getId());
 			blogMap.put("title", blog.getTitle());
 			blogMap.put("summary", blog.getSummary());
-			blogMap.put("releaseDate", DateFormatUtils.format(blog.getReleaseDate(), "yyyy-MM-dd HH:mm:ss"));
+			blogMap.put("releaseDate", DateFormatUtils.format(blog.getReleaseDate(), "yyyy-MM-dd"));
 			blogMap.put("clickHit", blog.getClickHit());
 			blogMap.put("replyHit", blog.getReplyHit());
 			//查询typeId
@@ -110,13 +108,14 @@ public class IndexModule {
 		}
 		
 		resultMap.put("blogs", items);
-		resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
+		//resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
+		resultMap.put("pageBar", PageUtil.getPageMap(pager.getPageNumber(), pager.getPageSize(), count));
 		return resultMap;
 	}
 	
 	@At("/search")
 	@Ok("jsp:web.blog.result")
-	public Object search(String q,Integer pageNo){
+	public Object search(@Param("q")String q,Integer pageNo){
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("q", q);
 		q = ParamsUtil.getString(q);
@@ -125,7 +124,8 @@ public class IndexModule {
 			Map<String,Object> respMap = blogIndex.search(q,pageNo);
 			int count = (int) respMap.get("count");
 			if(count>0){
-				String pageBar = PageUtil.getPageBarWithClickName(pageNo, 10, count,"nextPage");
+				//String pageBar = PageUtil.getPageBarWithClickName(pageNo, 10, count,"nextPage");
+				Map<String,Integer> pageBar = PageUtil.getPageMap(pageNo, 10, count);
 				resultMap.put("pageBar", pageBar);
 			}
 			

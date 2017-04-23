@@ -45,7 +45,8 @@ public class BlogAdminModule {
 		List<Blog> blogs = dao.query(Blog.class, Cnd.orderBy().desc("releaseDate"),pager);
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("blogs", blogs);
-		resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
+		//resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
+		resultMap.put("pageBar", PageUtil.getPageMap(pager.getPageNumber(), pager.getPageSize(), count));
 		return resultMap;
 	}
 	

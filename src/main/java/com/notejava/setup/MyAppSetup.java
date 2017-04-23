@@ -3,13 +3,11 @@ package com.notejava.setup;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.ServletContext;
 
+import com.notejava.schedule.SyncBlog;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
 import org.nutz.dao.Sqls;
@@ -88,6 +86,9 @@ public class MyAppSetup implements Setup{
 		servletContext.setAttribute("linkList", linkList);
 		servletContext.setAttribute("blogger", blogger);
 		servletContext.setAttribute("blogTypes", typeMap);
+
+		Timer timer = new Timer();
+		timer.schedule(new SyncBlog(), new Date(), 1*60*60*1000);
 	}
 
 	@Override
