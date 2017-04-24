@@ -57,6 +57,8 @@
 					<div class="field-box">
 						<label>内容</label>
 						<div class="col-md-8">
+							//隐藏的id是  val_content  调用文本数据
+							<textarea id="val_content" style="display:none;" >${obj.data.blog.content}</textarea>
 							<!-- 加载编辑器的容器 -->
 							<script id="container" name="content" type="text/plain" style="height: 500px;width: 100%">
 								
@@ -122,7 +124,7 @@
     var ue = UE.getEditor('container');
     ue.ready(function() {
         //设置编辑器的内容
-        var content = '${obj.data.blog.content}';
+        var content = $('#val_content').val();
         ue.setContent(content);
     });
 </script>

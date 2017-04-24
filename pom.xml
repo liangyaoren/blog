@@ -116,39 +116,39 @@
         <version>1.r.57</version>
     </dependency>
   </dependencies>
-  <build>
-    <plugins>
-			<!-- 设置jdk版本 -->
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.5.1</version>
 				<configuration>
-					<target>1.7</target>
 					<source>1.7</source>
+					<target>1.7</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-
-			<!-- 跳过测试 -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18</version>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.0.7.v20131107</version>
 				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<!-- 把类代码打成一个jar包放在WEB-INF/lib下 -->
-					<archiveClasses>true</archiveClasses>
+					<httpConnector>
+						<port>8080</port>
+					</httpConnector>
+					<scanIntervalSeconds>5</scanIntervalSeconds>
+					<webAppConfig>
+						<contextPath>/</contextPath>
+					</webAppConfig>
 				</configuration>
 			</plugin>
 		</plugins>
-  </build>
+	</build>
 </project>
