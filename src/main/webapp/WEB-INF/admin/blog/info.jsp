@@ -48,12 +48,12 @@
 						<div class="col-md-8">
 							<select name="typeId" class="form-control">
 								<c:forEach var="blogType" items="${obj.data.blogTypes}">
-									<option value="${blogType.id}">${blogType.typeName}</option>
+									<option value="${blogType.id}" <c:if test="${blogType.id==obj.data.blog.typeId}">selected</c:if> >${blogType.typeName}</option>
 								</c:forEach>
 							</select>
 						</div>
 					</div>
-					
+
 					<div class="field-box">
 						<label>内容</label>
 						<div class="col-md-8">
