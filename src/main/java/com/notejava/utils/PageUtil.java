@@ -37,7 +37,7 @@ public class PageUtil {
 		return pageMap;
 	}
 
-	/*public static String getPageBar(int pageNo,int pageSize,int total){
+	public static String getPageBar(int pageNo,int pageSize,int total){
 		int pageCount = 0;
 		int beginIndex = 0;
 		int endIndex = 0;
@@ -85,7 +85,7 @@ public class PageUtil {
 		
 		return pageBar.toString();
 	}
-	
+	/**
 	public static String getPageBarWithClickName(int pageNo,int pageSize,int total,String clickName){
 		int pageCount = 0;
 		int beginIndex = 0;
