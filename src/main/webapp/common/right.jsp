@@ -5,6 +5,18 @@
     <div class="blog_classify">
         <div class="row">
             <div class="col-md-12">
+                <form action="${base}/search" onsubmit="return checkForm()">
+                    <div>
+                        <input type="text" class="form-control" id="q" name="q" placeholder="输入想搜索的内容...">
+                        <input type="hidden" name="pageNo" value="1">
+                        <%--<input type="submit" class="btn btn-default"/>--%>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <p>热门文章</p>
             </div>
         </div>
