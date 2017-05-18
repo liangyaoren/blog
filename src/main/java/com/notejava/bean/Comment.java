@@ -6,7 +6,7 @@ import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
 
-@Table("t_comment")
+@Table("comment")
 public class Comment {
 	@Id
 	@Column("id")

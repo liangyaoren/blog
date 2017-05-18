@@ -33,15 +33,7 @@
 						</div>
 					</div>
 					
-					<div class="field-box">
-						<label>昵称</label>
-						<div class="col-md-8">
-							<input name="nickName"
-								class="form-control inline-input" type="text" value="${obj.data.nickName}" />
-						</div>
-					</div>
-					
-					<div class="field-box">
+<%--					<div class="field-box">
 						<label>头像</label>
 						<div class="col-md-8">
 							<img id="imgUrl" alt="头像" src="${base}/static/userImages/${obj.data.imageName}">
@@ -50,7 +42,7 @@
 							<input id="userImage" type="file" onchange="upload()">
 							<input id="imageName" type="hidden" name="imageName" value="${obj.data.imageName}">
 						</div>
-					</div>
+					</div>--%>
 					
 					<div class="field-box">
 						<label>个性签名</label>

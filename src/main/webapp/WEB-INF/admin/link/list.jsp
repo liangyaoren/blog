@@ -41,8 +41,8 @@
                     <tbody>
                     <c:forEach var="link" items="${obj.data.links}" varStatus="status">
 	                     <tr>
-	                         <td><a href="#myModal" data-toggle="modal" onclick="info(${link.id})">${link.linkName}</a></td>
-	                         <td>${link.linkUrl}</td>
+	                         <td><a href="#myModal" data-toggle="modal" onclick="info(${link.id})">${link.name}</a></td>
+	                         <td>${link.url}</td>
 	                         <td>${link.orderNo}</td>
 	                         <td>
 	                         	<div class="actions">
@@ -179,8 +179,8 @@
 			data:{'id':id},
 			success:function(result){
 				if(result.code == 0){
-					$('#linkName').val(result.data.linkName);
-					$('#linkUrl').val(result.data.linkUrl);
+					$('#linkName').val(result.data.name);
+					$('#linkUrl').val(result.data.url);
 					$('#orderNo').val(result.data.orderNo);
 					$('#linkId').val(result.data.id);
 				}else{

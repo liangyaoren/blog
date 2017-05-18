@@ -39,7 +39,7 @@
 		<ul>
 			<c:forEach items="${typeNameList}" var="type">
 				<li>
-					<a href="javascript:void(0)" onclick="gotoPageByTypeId(1,10,${type.id})">${type.typeName}(${type.blogCount})</a>
+					<a href="javascript:void(0)" onclick="gotoPageByTypeId(1,10,${type.id})">${type.name}(${type.blogCount})</a>
 				</li>
 			</c:forEach>
 		</ul>
@@ -50,9 +50,9 @@
 		<h3>按日期</h3>
 		<hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
 		<ul>
-			<c:forEach items="${releaseDateList}" var="releaseDate">
+			<c:forEach items="${createTimeList}" var="createTime">
 				<li>
-					<a href="javascript:void(0)" onclick="gotoPageByDate(1,10,'${releaseDate.releaseDate}')">${releaseDate.releaseDate}(${releaseDate.blogCount})</a>
+					<a href="javascript:void(0)" onclick="gotoPageByDate(1,10,'${createTime.createTime}')">${createTime.createTime}(${createTime.blogCount})</a>
 				</li>
 			</c:forEach>
 		</ul>

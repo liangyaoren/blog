@@ -104,17 +104,7 @@
 	    <artifactId>commons-lang3</artifactId>
 	    <version>3.5</version>
 	</dependency>
-	
-	<dependency>
-		<groupId>org.apache.shiro</groupId>
-		<artifactId>shiro-web</artifactId>
-		<version>1.2.6</version>
-	</dependency>
-	<dependency>
-        <groupId>org.nutz</groupId>
-        <artifactId>nutz-integration-shiro</artifactId>
-        <version>1.r.57</version>
-    </dependency>
+
   </dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>

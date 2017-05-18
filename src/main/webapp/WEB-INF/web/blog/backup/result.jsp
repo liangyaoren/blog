@@ -28,7 +28,7 @@
 						<div>
 							<a style="color: red" href="${base}/blog/${blog.id}">http://notejava.com/blog/${blog.id}</a>
 						</div>
-						<div>发布日期：${blog.releaseDateStr}</div>
+						<div>发布日期：${blog.createTimeStr}</div>
 					</li>
 				</c:forEach>
 			</ul>

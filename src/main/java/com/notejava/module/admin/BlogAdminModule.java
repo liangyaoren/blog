@@ -42,7 +42,7 @@ public class BlogAdminModule {
 		if(count<=0){
 			return null;
 		}
-		List<Blog> blogs = dao.query(Blog.class, Cnd.orderBy().desc("releaseDate"),pager);
+		List<Blog> blogs = dao.query(Blog.class, Cnd.orderBy().desc("createTime"),pager);
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("blogs", blogs);
 		resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
@@ -80,7 +80,7 @@ public class BlogAdminModule {
 		Blog blog = null;
 		if(Strings.isNullOrEmpty(id)){
 			blog = new Blog();
-			blog.setReleaseDate(new Date());
+			blog.setCreateTime(new Date());
 		}else{
 			blog = dao.fetch(Blog.class, Long.parseLong(id));
 		}

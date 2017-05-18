@@ -26,9 +26,9 @@ public class MyAppSetup implements Setup{
 	public void init(NutConfig nc) {
 		Dao dao = nc.getIoc().get(Dao.class);
 		//按日期分类
-		Sql sql = Sqls.create("SELECT DATE_FORMAT(releaseDate,'%Y-%m') AS releaseDateStr ,COUNT(*) AS blogCount  FROM t_blog GROUP BY DATE_FORMAT(releaseDate,'%Y-%m') ORDER BY DATE_FORMAT(releaseDate,'%Y-%m') DESC");
+		Sql sql = Sqls.create("SELECT DATE_FORMAT(createTime,'%Y-%m') AS createTime ,COUNT(*) AS blogCount  FROM blog GROUP BY DATE_FORMAT(createTime,'%Y-%m') ORDER BY DATE_FORMAT(createTime,'%Y-%m') DESC");
 		//按类型分类
-		Sql sql2 = Sqls.create("select t2.id,t2.typeName,count(t1.id) as blogCount from t_blog t1,t_blogType t2 where t1.typeId=t2.id group by t1.typeId order by t2.orderNo");
+		Sql sql2 = Sqls.create("select t2.id,t2.name as typeName,count(t1.id) as blogCount from blog t1,blogType t2 where t1.typeId=t2.id group by t1.typeId order by t2.orderNo");
 		
 		sql.setCallback(new SqlCallback() {
 			@Override
@@ -36,9 +36,9 @@ public class MyAppSetup implements Setup{
 				List<Map<String,Object>> lists = new ArrayList<Map<String,Object>>();
 				while(rs.next()){
 					Map<String, Object> map = new HashMap<String, Object>();
-					String releaseDate = rs.getString("releaseDateStr");
+					String createTime = rs.getString("createTime");
 					Integer blogCount = rs.getInt("blogCount");
-					map.put("releaseDate", releaseDate);
+					map.put("createTime", createTime);
 					map.put("blogCount", blogCount);
 					lists.add(map);
 				}
@@ -74,14 +74,14 @@ public class MyAppSetup implements Setup{
 		//封装typeMap
 		Map<Long, String> typeMap = new HashMap<Long, String>();
 		for(BlogType type:blogTypes){
-			typeMap.put(type.getId(), type.getTypeName());
+			typeMap.put(type.getId(), type.getName());
 		}
 		blogger.setPassword(null);
-		List<Map<String,Object>> releaseDateList = (List<Map<String, Object>>) sql.getResult();
+		List<Map<String,Object>> createTimeList = (List<Map<String, Object>>) sql.getResult();
 		List<Map<String,Object>> typeNameList = (List<Map<String, Object>>) sql2.getResult();
 		
 		ServletContext servletContext = nc.getServletContext();
-		servletContext.setAttribute("releaseDateList", releaseDateList);
+		servletContext.setAttribute("createTimeList", createTimeList);
 		servletContext.setAttribute("typeNameList", typeNameList);
 		servletContext.setAttribute("linkList", linkList);
 		servletContext.setAttribute("blogger", blogger);

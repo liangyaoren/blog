@@ -21,9 +21,9 @@
 		gotoPage(pageNo,pageSize);
 	}
 	
-	function gotoPageByDate(pageNo,pageSize,releaseDate){
-		$('#cndName').val('releaseDate');
-		$('#cndValue').val(releaseDate);
+	function gotoPageByDate(pageNo,pageSize,createTime){
+		$('#cndName').val('createTime');
+		$('#cndValue').val(createTime);
 		gotoPage(pageNo,pageSize);
 	}
 </script>

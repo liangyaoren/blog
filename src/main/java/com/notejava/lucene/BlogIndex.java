@@ -42,7 +42,7 @@ import com.google.common.base.Strings;
 import com.notejava.bean.Blog;
 
 public class BlogIndex {
-	private static Path path = Paths.get("/data/lucene");
+	private static Path path = Paths.get("F:\\lucene");
 	private static  Analyzer analyzer = new SmartChineseAnalyzer();
 
 	private IndexWriter getWriter() throws Exception{
@@ -56,7 +56,7 @@ public class BlogIndex {
 		Document doc = new Document();
 		doc.add(new StringField("id", String.valueOf(blog.getId()), Field.Store.YES));
 		doc.add(new TextField("title", blog.getTitle(), Field.Store.YES));
-		doc.add(new StringField("releaseDate", DateFormatUtils.format(blog.getReleaseDate(), "yyyy-MM-dd"), Field.Store.YES));
+		doc.add(new StringField("releaseDate", DateFormatUtils.format(blog.getCreateTime(), "yyyy-MM-dd"), Field.Store.YES));
 		doc.add(new TextField("content", blog.getContentNoTag(), Field.Store.YES));
 		IndexWriter writer = getWriter();
 		writer.addDocument(doc);
@@ -67,7 +67,7 @@ public class BlogIndex {
 		Document doc = new Document();
 		doc.add(new StringField("id", String.valueOf(blog.getId()), Field.Store.YES));
 		doc.add(new TextField("title", blog.getTitle(), Field.Store.YES));
-		doc.add(new StringField("releaseDate", DateFormatUtils.format(blog.getReleaseDate(), "yyyy-MM-dd"), Field.Store.YES));
+		doc.add(new StringField("releaseDate", DateFormatUtils.format(blog.getCreateTime(), "yyyy-MM-dd"), Field.Store.YES));
 		doc.add(new TextField("content", blog.getContentNoTag(), Field.Store.YES));
 		//实际先删除再插入
 		IndexWriter writer = getWriter();
@@ -122,8 +122,8 @@ public class BlogIndex {
 			Document doc = is.doc(scoreDoc.doc);
 			String id = doc.get("id");
 			blog.setId(Long.parseLong(id));
-			String releaseDateStr = doc.get("releaseDate");
-			blog.setReleaseDateStr(releaseDateStr);
+			String createTimeStr = doc.get("releaseDate");
+			blog.setcreateTimeStr(createTimeStr);
 			String title = doc.get("title");
 			String content=StringEscapeUtils.escapeHtml4(doc.get("content"));
 			if(title!=null){

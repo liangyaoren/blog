@@ -25,10 +25,10 @@ public class SyncBlog extends TimerTask {
         Pager pager = new Pager().setPageNumber(1).setPageSize(5);
         ServletContext servletContext = Mvcs.getServletContext();
 
-        List<Blog> hotBlog = dao.query(Blog.class, Cnd.orderBy().desc("clickHit"), pager);
+        List<Blog> hotBlog = dao.query(Blog.class, Cnd.orderBy().desc("clicks"), pager);
         servletContext.setAttribute("hotBlog", hotBlog);
 
-        List<Blog> newBlog = dao.query(Blog.class, Cnd.orderBy().desc("releaseDate"), pager);
+        List<Blog> newBlog = dao.query(Blog.class, Cnd.orderBy().desc("createTime"), pager);
         servletContext.setAttribute("newBlog", newBlog);
 
     }

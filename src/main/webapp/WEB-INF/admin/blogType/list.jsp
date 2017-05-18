@@ -38,7 +38,7 @@
                     <tbody>
                     <c:forEach var="blogType" items="${obj.data.blogTypes}" varStatus="status">
 	                     <tr>
-	                         <td><a href="#myModal" data-toggle="modal" onclick="info(${blogType.id})">${blogType.typeName}</a></td>
+	                         <td><a href="#myModal" data-toggle="modal" onclick="info(${blogType.id})">${blogType.name}</a></td>
 	                         <td>${blogType.orderNo}</td>
 	                         <td>
 	                         	<div class="actions">
@@ -50,8 +50,9 @@
 	                 </c:forEach>
                     </tbody>
                 </table>
+
                 <ul class="pagination pull-right">
-                	${obj.data.pageBar}
+					${obj.data.pageBar}
                 </ul>
             </div>                
         </div>
@@ -166,7 +167,7 @@
 			data:{'id':id},
 			success:function(result){
 				if(result.code == 0){
-					$('#typeName').val(result.data.typeName);
+					$('#typeName').val(result.data.name);
 					$('#orderNo').val(result.data.orderNo);
 					$('#typeId').val(result.data.id);
 				}else{

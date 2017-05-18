@@ -37,7 +37,7 @@ var _hmt = _hmt || [];
 								<%-- <span>博主：${blogger.userName}&nbsp;&nbsp; </span> --%>
 								<span>分类：${blog.typeName}&nbsp;&nbsp;</span>
 								<span>阅读：${blog.clickHit}&nbsp;&nbsp;</span>
-								<span>发布时间：${blog.releaseDate}</span>
+								<span>发布时间：${blog.createTime}</span>
 							</div>
 							<p>
 								${blog.summary}......

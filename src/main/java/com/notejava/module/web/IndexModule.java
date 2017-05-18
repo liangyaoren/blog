@@ -50,25 +50,25 @@ public class IndexModule {
 		pager.setPageSize(ParamsUtil.getInteger(map.get("pageSize"), PAGE_SIZE));
 		
 		Long typeIdCnd = ParamsUtil.getLong(map.get("typeId"), null);
-		String releaseDateCnd = ParamsUtil.getString(map.get("releaseDate"), null);
-		Long releaseDateStart = null;
-		Long releaseDateEnd = null;
-		if(releaseDateCnd!=null){
+		String createTimeCnd = ParamsUtil.getString(map.get("createTime"), null);
+		Long createTimeStart = null;
+		Long createTimeEnd = null;
+		if(createTimeCnd!=null){
 			DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			releaseDateStart = simpleDateFormat.parse(releaseDateCnd+"-1").getTime();
-			releaseDateEnd = simpleDateFormat.parse(releaseDateCnd+"-31").getTime();
+			createTimeStart = simpleDateFormat.parse(createTimeCnd+"-1").getTime();
+			createTimeEnd = simpleDateFormat.parse(createTimeCnd+"-31").getTime();
 		}
 		
 		Criteria cri = Cnd.cri();
-		cri.getOrderBy().desc("releaseDate");
+		cri.getOrderBy().desc("createTime");
 		
 		if(typeIdCnd!=null){
 			cri.where().and("typeId", "=", typeIdCnd);
 		}
 		
-		if(releaseDateCnd!=null){
-			cri.where().andGTE("releaseDate", releaseDateStart);
-			cri.where().andLTE("releaseDate", releaseDateEnd);
+		if(createTimeCnd!=null){
+			cri.where().andGTE("createTime", createTimeStart);
+			cri.where().andLTE("createTime", createTimeEnd);
 		}
 		
 		int count = dao.count(Blog.class,cri);
@@ -94,9 +94,9 @@ public class IndexModule {
 			blogMap.put("id", blog.getId());
 			blogMap.put("title", blog.getTitle());
 			blogMap.put("summary", blog.getSummary());
-			blogMap.put("releaseDate", DateFormatUtils.format(blog.getReleaseDate(), "yyyy-MM-dd"));
-			blogMap.put("clickHit", blog.getClickHit());
-			blogMap.put("replyHit", blog.getReplyHit());
+			blogMap.put("createTime", DateFormatUtils.format(blog.getCreateTime(), "yyyy-MM-dd"));
+			blogMap.put("clickHit", blog.getClicks());
+			blogMap.put("replyHit", blog.getReplys());
 			//查询typeId
 			Long typeId = blog.getTypeId();
 			Map<Long,String> blogTypes = (Map<Long, String>) servletContext.getAttribute("blogTypes");

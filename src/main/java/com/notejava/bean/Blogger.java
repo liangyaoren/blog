@@ -4,7 +4,7 @@ import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
 
-@Table("t_blogger")
+@Table("blogger")
 public class Blogger {
 	@Id
 	@Column("id")
@@ -13,14 +13,10 @@ public class Blogger {
 	private String userName;
 	@Column("password")
 	private String password;
-	@Column("nickName")
-	private String nickName;
 	@Column("sign")
 	private String sign;
 	@Column("profile")
 	private String proFile;
-	@Column("imageName")
-	private String imageName;
 	
 	public Long getId() {
 		return id;
@@ -40,12 +36,6 @@ public class Blogger {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getNickName() {
-		return nickName;
-	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
 	public String getSign() {
 		return sign;
 	}
@@ -57,11 +47,5 @@ public class Blogger {
 	}
 	public void setProFile(String proFile) {
 		this.proFile = proFile;
-	}
-	public String getImageName() {
-		return imageName;
-	}
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
 	}
 }

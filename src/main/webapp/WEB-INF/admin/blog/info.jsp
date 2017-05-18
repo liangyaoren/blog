@@ -48,7 +48,7 @@
 						<div class="col-md-8">
 							<select name="typeId" class="form-control">
 								<c:forEach var="blogType" items="${obj.data.blogTypes}">
-									<option value="${blogType.id}" <c:if test="${blogType.id==obj.data.blog.typeId}">selected</c:if> >${blogType.typeName}</option>
+									<option value="${blogType.id}" <c:if test="${blogType.id==obj.data.blog.typeId}">selected</c:if> >${blogType.name}</option>
 								</c:forEach>
 							</select>
 						</div>

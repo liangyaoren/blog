@@ -11,9 +11,9 @@
     <div class="row">
         <div class="col-md-12">
             <p style="text-align: center">
-                类别:${obj.data.blog.typeName} &nbsp;阅读:${obj.data.blog.clickHit}&nbsp;
-                <fmt:formatDate value="${obj.data.blog.releaseDate}" var="releaseDate" pattern="yyyy-MM-dd HH:mm:ss" />
-                发布时间:${releaseDate}
+                类别:${obj.data.blog.typeName} &nbsp;阅读:${obj.data.blog.clicks}&nbsp;
+                <fmt:formatDate value="${obj.data.blog.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss" />
+                发布时间:${createTime}
             </p>
         </div>
     </div>

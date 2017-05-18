@@ -34,12 +34,17 @@ var ioc = {
         moduleFiter : {
         	type : "com.notejava.filters.ModuleFilter",
         },
+
+        loginInterceptor: {
+	        type : "com.notejava.filters.LoginInterceptor"
+        },
         
         $aop : {
             type : 'org.nutz.ioc.aop.config.impl.JsonAopConfigration',
             fields : {
                 itemList : [
                     ['.+Module','.+[^_]$','ioc:moduleFiter'],
+                    ['.+AdminModule','.+[^_]$','ioc:loginInterceptor']
                 ]
             }
         },

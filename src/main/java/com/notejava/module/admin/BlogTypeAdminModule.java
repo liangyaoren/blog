@@ -39,8 +39,8 @@ public class BlogTypeAdminModule {
 		List<BlogType> blogTypes = dao.query(BlogType.class, Cnd.orderBy().desc("orderNo"),pager);
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("blogTypes", blogTypes);
-		//resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
-		resultMap.put("pageBar", PageUtil.getPageMap(pager.getPageNumber(), pager.getPageSize(), count));
+		resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
+		//resultMap.put("pageBar", PageUtil.getPageMap(pager.getPageNumber(), pager.getPageSize(), count));
 		return resultMap;
 	}
 	
@@ -67,7 +67,7 @@ public class BlogTypeAdminModule {
 		}else{
 			blogType = dao.fetch(BlogType.class, Long.valueOf(id));
 		}
-		blogType.setTypeName(typeName);
+		blogType.setName(typeName);
 		blogType.setOrderNo(orderNo);
 		if(Strings.isNullOrEmpty(id)){
 			//添加

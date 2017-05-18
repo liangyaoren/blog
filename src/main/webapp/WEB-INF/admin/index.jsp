@@ -132,7 +132,7 @@
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                  	  欢迎您：${user}
+                  	  欢迎您：${user.userName}
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">

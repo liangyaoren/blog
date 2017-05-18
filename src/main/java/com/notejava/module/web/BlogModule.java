@@ -62,11 +62,11 @@ public class BlogModule {
 		
 		//阅读数加1
 		Blog b = dao.fetch(Blog.class,id);
-		Integer clickHit = b.getClickHit();
+		Integer clickHit = b.getClicks();
 		if(clickHit!=null){
-			b.setClickHit(clickHit+1);
+			b.setClicks(clickHit+1);
 		}else{
-			b.setClickHit(1);
+			b.setClicks(1);
 		}
 		dao.update(b);
 		

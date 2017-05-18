@@ -1,17 +1,9 @@
 package com.notejava.module.admin;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.crypto.hash.Md5Hash;
+import com.notejava.bean.BlogType;
+import com.notejava.bean.Blogger;
+import com.notejava.bean.Link;
+import com.notejava.utils.ParamsUtil;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
 import org.nutz.dao.Sqls;
@@ -24,10 +16,14 @@ import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
 
-import com.notejava.bean.BlogType;
-import com.notejava.bean.Blogger;
-import com.notejava.bean.Link;
-import com.notejava.utils.ParamsUtil;
+import javax.servlet.ServletContext;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @IocBean
 @At("admin")
@@ -51,9 +47,9 @@ public class AdminModule {
 	@Ok("json")
 	public Object flush(){
 		//按日期分类
-		Sql sql = Sqls.create("SELECT DATE_FORMAT(releaseDate,'%Y-%m') AS releaseDateStr ,COUNT(*) AS blogCount  FROM t_blog GROUP BY DATE_FORMAT(releaseDate,'%Y-%m') ORDER BY DATE_FORMAT(releaseDate,'%Y-%m') DESC");
+		Sql sql = Sqls.create("SELECT DATE_FORMAT(createTime,'%Y-%m') AS createTime ,COUNT(*) AS blogCount  FROM blog GROUP BY DATE_FORMAT(createTime,'%Y-%m') ORDER BY DATE_FORMAT(createTime,'%Y-%m') DESC");
 		//按类型分类
-		Sql sql2 = Sqls.create("select t2.id,t2.typeName,count(t1.id) as blogCount from t_blog t1,t_blogType t2 where t1.typeId=t2.id group by t1.typeId order by t2.orderNo");
+		Sql sql2 = Sqls.create("select t2.id,t2.name as typeName,count(t1.id) as blogCount from blog t1,blogType t2 where t1.typeId=t2.id group by t1.typeId order by t2.orderNo");
 
 		sql.setCallback(new SqlCallback() {
 			@Override
@@ -61,9 +57,9 @@ public class AdminModule {
 				List<Map<String,Object>> lists = new ArrayList<Map<String,Object>>();
 				while(rs.next()){
 					Map<String, Object> map = new HashMap<String, Object>();
-					String releaseDate = rs.getString("releaseDateStr");
+					String createTime = rs.getString("createTime");
 					Integer blogCount = rs.getInt("blogCount");
-					map.put("releaseDate", releaseDate);
+					map.put("createTime", createTime);
 					map.put("blogCount", blogCount);
 					lists.add(map);
 				}
@@ -99,14 +95,14 @@ public class AdminModule {
 		//封装typeMap
 		Map<Long, String> typeMap = new HashMap<Long, String>();
 		for(BlogType type:blogTypes){
-			typeMap.put(type.getId(), type.getTypeName());
+			typeMap.put(type.getId(), type.getName());
 		}
 		blogger.setPassword(null);
-		List<Map<String,Object>> releaseDateList = (List<Map<String, Object>>) sql.getResult();
+		List<Map<String,Object>> createTimeList = (List<Map<String, Object>>) sql.getResult();
 		List<Map<String,Object>> typeNameList = (List<Map<String, Object>>) sql2.getResult();
 
 		ServletContext servletContext = Mvcs.getServletContext();
-		servletContext.setAttribute("releaseDateList", releaseDateList);
+		servletContext.setAttribute("createTimeList", createTimeList);
 		servletContext.setAttribute("typeNameList", typeNameList);
 		servletContext.setAttribute("linkList", linkList);
 		servletContext.setAttribute("blogger", blogger);
@@ -121,12 +117,12 @@ public class AdminModule {
 		String password = ParamsUtil.getString(map.get("password"));
 		String newPassword = ParamsUtil.getString(map.get("newPassword"));
 		
-		Blogger user = dao.fetch(Blogger.class,Cnd.where("userName", "=", userName).and("password", "=", new Md5Hash(password,"notejava").toString()));
+		Blogger user = dao.fetch(Blogger.class,Cnd.where("userName", "=", userName).and("password", "=", password));
 		if(user==null){
 			throw new RuntimeException("原用户或密码错误");
 		}
 		
-		user.setPassword(new Md5Hash(newPassword,"notejava").toString());
+		user.setPassword(newPassword);
 		dao.update(user);
 		return null;
 	}

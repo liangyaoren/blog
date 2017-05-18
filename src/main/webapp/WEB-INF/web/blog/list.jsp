@@ -12,7 +12,7 @@
                 </div>
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-md-12">
-                        <p>类别:${blog.typeName}&emsp;阅读:${blog.clickHit}&emsp;发布时间:${blog.releaseDate}</p>
+                        <p>类别:${blog.typeName}&emsp;阅读:${blog.clickHit}&emsp;发布时间:${blog.createTime}</p>
                     </div>
                 </div>
                 <div class="row">

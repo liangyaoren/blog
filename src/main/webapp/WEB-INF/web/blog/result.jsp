@@ -30,7 +30,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <p>发布日期：${blog.releaseDateStr}</p>
+                    <p>发布日期：${blog.createTimeStr}</p>
                 </div>
             </div>
         </div>

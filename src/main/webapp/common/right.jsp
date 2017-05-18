@@ -24,7 +24,7 @@
         <c:forEach items="${hotBlog}" var="blog">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-12">
-                    <a style="color: #757575;text-decoration: underline" href="${base}/blog/${blog.id}">${blog.title}&nbsp;(${blog.clickHit}+阅读)</a>
+                    <a style="color: #757575;text-decoration: underline" href="${base}/blog/${blog.id}">${blog.title}&nbsp;(${blog.clicks}+阅读)</a>
                 </div>
             </div>
         </c:forEach>
@@ -42,8 +42,8 @@
         <c:forEach items="${newBlog}" var="blog">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-12">
-                    <fmt:formatDate value="${blog.releaseDate}" var="releaseDate" pattern="yyyy-MM-dd HH:mm:ss" />
-                    <a style="color: #757575;text-decoration: underline" href="${base}/blog/${blog.id}">${blog.title}&nbsp;(${releaseDate})</a>
+                    <fmt:formatDate value="${blog.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss" />
+                    <a style="color: #757575;text-decoration: underline" href="${base}/blog/${blog.id}">${blog.title}&nbsp;(${createTime})</a>
                 </div>
             </div>
         </c:forEach>
@@ -86,10 +86,10 @@
             </div>
         </div>
 
-        <c:forEach items="${releaseDateList}" var="releaseDate">
+        <c:forEach items="${createTimeList}" var="createTime">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-12">
-                    <a href="${base}/index?releaseDate=${releaseDate.releaseDate}">${releaseDate.releaseDate}(${releaseDate.blogCount})</a>
+                    <a href="${base}/index?createTime=${createTime.createTime}">${createTime.createTime}(${createTime.blogCount})</a>
                 </div>
             </div>
         </c:forEach>
@@ -105,7 +105,7 @@
         <c:forEach items="${linkList}" var="link">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-12">
-                    <a href="${link.linkUrl}">${link.linkName}</a>
+                    <a href="${link.url}">${link.name}</a>
                 </div>
             </div>
         </c:forEach>

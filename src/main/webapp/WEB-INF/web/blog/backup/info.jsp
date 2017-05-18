@@ -26,8 +26,8 @@ var _hmt = _hmt || [];
 			<div class="blog_info">
 				<h3 class="blog_title">${obj.data.blog.title}</h3>
 				<div class="blog_sign">
-					<fmt:formatDate value="${obj.data.blog.releaseDate}" var="releaseDate" pattern="yyyy-MM-dd HH:mm:ss" />
-					<span>发布时间:${releaseDate}</span>&nbsp;&nbsp;
+					<fmt:formatDate value="${obj.data.blog.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss" />
+					<span>发布时间:${createTime}</span>&nbsp;&nbsp;
 					<span>类别:${obj.data.blog.typeName}</span>&nbsp;&nbsp;
 					<span>阅读:(${obj.data.blog.clickHit})</span>&nbsp;&nbsp;
 					<span>评论:(${obj.data.blog.replyHit})</span>
