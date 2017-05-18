@@ -42,7 +42,7 @@ import com.google.common.base.Strings;
 import com.notejava.bean.Blog;
 
 public class BlogIndex {
-	private static Path path = Paths.get("F:\\lucene");
+	private static Path path = Paths.get("/data/lucene");
 	private static  Analyzer analyzer = new SmartChineseAnalyzer();
 
 	private IndexWriter getWriter() throws Exception{
