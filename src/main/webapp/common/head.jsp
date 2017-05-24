@@ -43,7 +43,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="${base}/index" style="color: white">首页</a></li>
                     <li><a href="${base}/blogger/info" style="color: white">关于博主</a></li>
-                    <li><a href="/common/aboutSite.jsp" style="color: white">关于本站</a></li>
+                    <li><a href="http://blog.notejava.com/blog/47" style="color: white">关于notejava</a></li>
                     <li><a href="/common/messageBoard.jsp" style="color: white">留言板</a></li>
                     <li><a href="http://blog.notejava.com/blog/47" style="color: white">工具收藏</a></li>
                     <li><a href="javascript:void(0)" style="color: white">我的github</a></li>
