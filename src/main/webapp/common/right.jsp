@@ -49,19 +49,22 @@
         </c:forEach>
     </div>
 
-    <%--<div class="blog_classify">
+    <div class="blog_classify">
         <div class="row">
             <div class="col-md-12">
-                <p>近期评论</p>
+                <p>最新评论</p>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">nginx反向代理到多台tomcat配置</a>
+        <c:forEach items="${newComments}" var="comment">
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-12">
+                    <fmt:formatDate value="${comment.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss" />
+                    <a style="color: #757575;text-decoration: underline" href="${base}/blog/${comment.blogId}">${comment.content}</a>--@${comment.nickname} 发表于${createTime}
+                </div>
             </div>
-        </div>
-    </div>--%>
+        </c:forEach>
+    </div>
 
     <div class="blog_classify">
         <div class="row">

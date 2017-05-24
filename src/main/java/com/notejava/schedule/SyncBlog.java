@@ -1,6 +1,7 @@
 package com.notejava.schedule;
 
 import com.notejava.bean.Blog;
+import com.notejava.bean.Comment;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
 import org.nutz.dao.pager.Pager;
@@ -30,6 +31,9 @@ public class SyncBlog extends TimerTask {
 
         List<Blog> newBlog = dao.query(Blog.class, Cnd.orderBy().desc("createTime"), pager);
         servletContext.setAttribute("newBlog", newBlog);
+
+        List<Comment> comments = dao.query(Comment.class, Cnd.where("state", "=", 1).orderBy().desc("createTime"), pager);
+        servletContext.setAttribute("newComments", comments);
 
     }
 }
