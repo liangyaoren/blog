@@ -32,7 +32,7 @@ public class SyncBlog extends TimerTask {
         List<Blog> newBlog = dao.query(Blog.class, Cnd.orderBy().desc("createTime"), pager);
         servletContext.setAttribute("newBlog", newBlog);
 
-        List<Comment> comments = dao.query(Comment.class, Cnd.where("state", "=", 1).orderBy().desc("createTime"), pager);
+        List<Comment> comments = dao.query(Comment.class, Cnd.where("state", "=", 1).desc("createTime"), pager);
         servletContext.setAttribute("newComments", comments);
 
     }
