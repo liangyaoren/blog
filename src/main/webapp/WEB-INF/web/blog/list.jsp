@@ -32,7 +32,7 @@
 
                     <c:if test="${obj.data.pageBar.beginIndex < obj.data.pageBar.currentPage}">
                         <li>
-                            <a href="${base}/index?pageNo=${obj.data.pageBar.currentPage-1}" aria-label="Previous">
+                            <a href="${base}/index?pageNo=${obj.data.pageBar.currentPage-1}&createTime=${obj.data.createTime}&typeId=${obj.data.typeId}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -40,12 +40,12 @@
 
 
                     <c:forEach var="no" begin="${obj.data.pageBar.beginIndex}" end="${obj.data.pageBar.endIndex}">
-                        <li <c:if test="${no==obj.data.pageBar.currentPage}">class="active"</c:if> ><a href="${base}/index?pageNo=${no}">${no}</a></li>
+                        <li <c:if test="${no==obj.data.pageBar.currentPage}">class="active"</c:if> ><a href="${base}/index?pageNo=${no}&createTime=${obj.data.createTime}&typeId=${obj.data.typeId}">${no}</a></li>
                     </c:forEach>
 
                     <c:if test="${obj.data.pageBar.endIndex > obj.data.pageBar.currentPage}">
                         <li>
-                            <a href="${base}/index?pageNo=${obj.data.pageBar.currentPage+1}" aria-label="Next">
+                            <a href="${base}/index?pageNo=${obj.data.pageBar.currentPage+1}&createTime=${obj.data.createTime}&typeId=${obj.data.typeId}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>

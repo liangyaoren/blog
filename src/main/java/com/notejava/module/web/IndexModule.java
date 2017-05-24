@@ -57,6 +57,7 @@ public class IndexModule {
 			DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			createTimeStart = simpleDateFormat.parse(createTimeCnd+"-1").getTime();
 			createTimeEnd = simpleDateFormat.parse(createTimeCnd+"-31").getTime();
+			resultMap.put("createTime", createTimeCnd);
 		}
 		
 		Criteria cri = Cnd.cri();
@@ -64,6 +65,7 @@ public class IndexModule {
 		
 		if(typeIdCnd!=null){
 			cri.where().and("typeId", "=", typeIdCnd);
+			resultMap.put("typeId", typeIdCnd);
 		}
 		
 		if(createTimeCnd!=null){
