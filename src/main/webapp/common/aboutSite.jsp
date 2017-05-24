@@ -3,7 +3,7 @@
 <div class="col-md-8" style="margin-top: 20px;">
 	<div class="row">
 		<div class="col-md-12">
-			<p>本博客使用轻量级的nutz框架开发</p>
+			<p>本博客使用nutz框架开发</p>
 		</div>
 	</div>
 
@@ -27,13 +27,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<p>使用mysql小型数据库，使用Druid连接池</p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-12">
-			<p>使用shiro做后台认证</p>
+			<p>使用mysql数据库，使用Druid连接池</p>
 		</div>
 	</div>
 
