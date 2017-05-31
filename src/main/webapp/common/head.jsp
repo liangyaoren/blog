@@ -46,7 +46,7 @@
                     <li><a href="http://blog.notejava.com/blog/48" style="color: white">关于notejava</a></li>
                     <li><a href="/common/messageBoard.jsp" style="color: white">留言板</a></li>
                     <li><a href="http://blog.notejava.com/blog/47" style="color: white">工具收藏</a></li>
-                    <li><a href="javascript:void(0)" style="color: white">我的github</a></li>
+                    <li><a href="https://github.com/liangyaoren/blog" style="color: white">github地址</a></li>
                 </ul>
                 <%--<form class="navbar-form navbar-right" action="${base}/search" onsubmit="return checkForm()">
                     <div class="form-group">
