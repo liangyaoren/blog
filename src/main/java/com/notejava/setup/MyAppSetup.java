@@ -28,7 +28,7 @@ public class MyAppSetup implements Setup{
 		//按日期分类
 		Sql sql = Sqls.create("SELECT DATE_FORMAT(createTime,'%Y-%m') AS createTime ,COUNT(*) AS blogCount  FROM blog GROUP BY DATE_FORMAT(createTime,'%Y-%m') ORDER BY DATE_FORMAT(createTime,'%Y-%m') DESC");
 		//按类型分类
-		Sql sql2 = Sqls.create("select t2.id,t2.name as typeName,count(t1.id) as blogCount from blog t1,blogType t2 where t1.typeId=t2.id group by t1.typeId order by t2.orderNo");
+		Sql sql2 = Sqls.create("select t2.id,t2.name as typeName,count(t1.id) as blogCount from blog t1,blogtype t2 where t1.typeId=t2.id group by t1.typeId order by t2.orderNo");
 		
 		sql.setCallback(new SqlCallback() {
 			@Override
