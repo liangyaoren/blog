@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${!empty obj.data.blog.title ? obj.data.blog.title:'Yaoren的博客'}</title>
+    <title>${!empty obj.data.blog.title ? obj.data.blog.title:'Yaoren 的博客'}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/notejava.css">
@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="${base}/index" style="color: white">Yaoren's Blog</a>
+                <a class="navbar-brand" href="${base}/index" style="color: white">Yaoren 的博客</a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
