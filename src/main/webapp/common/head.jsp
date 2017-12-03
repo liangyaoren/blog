@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>个人博客</title>
+    <title>${!empty obj.data.blog.title ? obj.data.blog.title:'Yaoren的博客'}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/notejava.css">
