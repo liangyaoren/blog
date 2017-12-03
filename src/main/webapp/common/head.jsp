@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="${base}/index" style="color: white">Yaoren's Blog--notejava</a>
+                <a class="navbar-brand" href="${base}/index" style="color: white">Yaoren's Blog</a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
