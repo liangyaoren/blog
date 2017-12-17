@@ -16,7 +16,7 @@ public class PageUtil {
 			endIndex = pageCount;
 		}else{
 			beginIndex = pageNo-2;
-			endIndex = pageNo+3;
+			endIndex = pageNo+2;
 			//如果首页小于1
 			if(beginIndex < 1){
 				beginIndex = 1;
@@ -24,7 +24,7 @@ public class PageUtil {
 			}
 			//如果尾页超过总页数
 			if(endIndex > pageCount){
-				beginIndex = endIndex-4;
+				beginIndex = pageCount-4;
 				endIndex = pageCount;
 			}
 		}
@@ -56,7 +56,7 @@ public class PageUtil {
 			}
 			//如果尾页超过总页数
 			if(endIndex > pageCount){
-				beginIndex = endIndex-9;
+				beginIndex = pageCount-9;
 				endIndex = pageCount;
 			}
 		}
