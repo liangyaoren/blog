@@ -38,6 +38,7 @@ public class IndexModule {
 	//默认的分页参数
 	private static int PAGE_NO = 1;
 	private static int PAGE_SIZE = 10;
+
 	BlogIndex blogIndex = new BlogIndex();
 	private ServletContext servletContext = Mvcs.getServletContext();
 	
