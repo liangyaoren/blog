@@ -2,6 +2,7 @@ package com.notejava.module.callback;
 
 import com.alibaba.druid.support.json.JSONUtils;
 import com.notejava.bean.Comment;
+import com.notejava.schedule.SyncBlog;
 import com.notejava.utils.ParamsUtil;
 import org.nutz.dao.Dao;
 import org.nutz.ioc.loader.annotation.Inject;
@@ -46,5 +47,7 @@ public class CommentModule {
 
             dao.insert(comm);
         }
+
+        new SyncBlog().run();
     }
 }

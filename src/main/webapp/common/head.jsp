@@ -43,9 +43,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="${base}/index" style="color: white">首页</a></li>
                     <li><a href="${base}/blogger/info" style="color: white">关于博主</a></li>
-                    <li><a href="http://blog.notejava.com/blog/48" style="color: white">关于notejava</a></li>
+                    <li><a href="${base}/blog/48" style="color: white">关于notejava</a></li>
                     <li><a href="/common/messageBoard.jsp" style="color: white">留言板</a></li>
-                    <li><a href="http://blog.notejava.com/blog/47" style="color: white">工具收藏</a></li>
+                    <%--<li><a href="${base}/blog/47" style="color: white">工具收藏</a></li>--%>
                     <li><a href="https://github.com/liangyaoren/blog" style="color: white">github地址</a></li>
                 </ul>
                 <%--<form class="navbar-form navbar-right" action="${base}/search" onsubmit="return checkForm()">
