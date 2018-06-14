@@ -18,7 +18,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <p>摘要：${blog.content}</p>
+                    <p style="word-break: break-word">摘要：${blog.content}</p>
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
 
                     <c:if test="${obj.data.pageBar.beginIndex < obj.data.pageBar.currentPage}">
                         <li>
-                            <a href="${base}/index?pageNo=${obj.data.pageBar.currentPage-1}" aria-label="Previous">
+                            <a href="${base}/search?q=${obj.data.q}&pageNo=${obj.data.pageBar.currentPage-1}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -51,12 +51,12 @@
 
 
                     <c:forEach var="no" begin="${obj.data.pageBar.beginIndex}" end="${obj.data.pageBar.endIndex}">
-                        <li <c:if test="${no==obj.data.pageBar.currentPage}">class="active"</c:if> ><a href="${base}/index?pageNo=${no}">${no}</a></li>
+                        <li <c:if test="${no==obj.data.pageBar.currentPage}">class="active"</c:if> ><a href="${base}/search?q=${obj.data.q}&pageNo=${no}">${no}</a></li>
                     </c:forEach>
 
                     <c:if test="${obj.data.pageBar.endIndex > obj.data.pageBar.currentPage}">
                         <li>
-                            <a href="${base}/index?pageNo=${obj.data.pageBar.currentPage+1}" aria-label="Next">
+                            <a href="${base}/search?q=${obj.data.q}&pageNo=${obj.data.pageBar.currentPage+1}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>

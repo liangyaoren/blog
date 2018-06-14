@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <form action="${base}/search" onsubmit="return checkForm()">
                     <div>
-                        <input type="text" class="form-control" id="q" name="q" placeholder="输入想搜索的内容...">
+                        <input type="text" class="form-control" id="q" name="q" placeholder="输入想搜索的内容..." value="${obj.data.q}">
                         <input type="hidden" name="pageNo" value="1">
                         <%--<input type="submit" class="btn btn-default"/>--%>
                     </div>

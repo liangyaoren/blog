@@ -1,6 +1,7 @@
 package com.notejava.module.web;
 
 import com.notejava.bean.Blog;
+import com.notejava.elasticsearch.EsClient;
 import com.notejava.lucene.BlogIndex;
 import com.notejava.utils.PageUtil;
 import com.notejava.utils.ParamsUtil;
@@ -115,6 +116,7 @@ public class IndexModule {
         return resultMap;
     }
 
+    /*使用lucene搜索
     @At("/search")
     @Ok("jsp:web.blog.result")
     public Object search(@Param("q") String q, Integer pageNo) {
@@ -129,11 +131,32 @@ public class IndexModule {
                 Map<String, Integer> pageBar = PageUtil.getPageMap(pageNo, 10, count);
                 resultMap.put("pageBar", pageBar);
             }
-
             resultMap.putAll(respMap);
         } catch (Exception e) {
             logger.error("lucene搜索失败" + e.getMessage(), e);
         }
+        return resultMap;
+    }
+    */
+
+    /**
+     * 使用 es 搜索
+     * @param q
+     * @param pageNo
+     * @return
+     */
+    @At("/search")
+    @Ok("jsp:web.blog.result")
+    public Object search(@Param("q") String q, Integer pageNo) {
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("q", q);
+        q = ParamsUtil.getString(q);
+        Map<String, Object> result = EsClient.find(q, pageNo);
+        Long count = (Long) result.get("count");
+        if (count > 0){
+            resultMap.put("pageBar", PageUtil.getPageMap(pageNo, 10, count.intValue()));
+        }
+        resultMap.putAll(result);
         return resultMap;
     }
 
@@ -143,4 +166,13 @@ public class IndexModule {
         return null;
     }
 
+    @At("/initIndex")
+    @Ok("json")
+    public Object initIndex() {
+        /*List<Blog> blogList = dao.query(Blog.class, Cnd.NEW());
+        for (Blog blog : blogList) {
+            EsClient.index(blog);
+        }*/
+        return null;
+    }
 }
