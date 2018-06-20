@@ -5,6 +5,7 @@ import com.notejava.lucene.BlogIndex;
 import com.notejava.utils.PageUtil;
 import com.notejava.utils.ParamsUtil;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,8 +23,6 @@ import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
 
 import javax.servlet.ServletContext;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,33 +44,27 @@ public class IndexModule {
     @At("/index")
     @Ok("jsp:web.blog.list")
     public Object index(@Param("..") Map<String, Object> map) throws Exception {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         Pager pager = new Pager();
         pager.setPageNumber(ParamsUtil.getInteger(map.get("pageNo"), PAGE_NO));
         pager.setPageSize(ParamsUtil.getInteger(map.get("pageSize"), PAGE_SIZE));
 
-        Long typeIdCnd = ParamsUtil.getLong(map.get("typeId"), null);
-        String createTimeCnd = ParamsUtil.getString(map.get("createTime"), null);
-        Long createTimeStart = null;
-        Long createTimeEnd = null;
-        if (createTimeCnd != null) {
-            DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            createTimeStart = simpleDateFormat.parse(createTimeCnd + "-1").getTime();
-            createTimeEnd = simpleDateFormat.parse(createTimeCnd + "-31").getTime();
-            resultMap.put("createTime", createTimeCnd);
-        }
-
         Criteria cri = Cnd.cri();
         cri.getOrderBy().desc("createTime");
 
+        String createTimeCnd = ParamsUtil.getString(map.get("createTime"), null);
+        if (createTimeCnd != null) {
+            resultMap.put("createTime", createTimeCnd);
+            Long createTimeStart = DateUtils.parseDate(createTimeCnd + "-1", "yyyy-MM-dd").getTime();
+            Long createTimeEnd = DateUtils.parseDate(createTimeCnd + "-31", "yyyy-MM-dd").getTime();
+            cri.where().andGTE("createTime", createTimeStart);
+            cri.where().andLTE("createTime", createTimeEnd);
+        }
+
+        Long typeIdCnd = ParamsUtil.getLong(map.get("typeId"), null);
         if (typeIdCnd != null) {
             cri.where().and("typeId", "=", typeIdCnd);
             resultMap.put("typeId", typeIdCnd);
-        }
-
-        if (createTimeCnd != null) {
-            cri.where().andGTE("createTime", createTimeStart);
-            cri.where().andLTE("createTime", createTimeEnd);
         }
 
         int count = dao.count(Blog.class, cri);
@@ -79,18 +72,15 @@ public class IndexModule {
             return null;
         }
 
-        List<Blog> blogs = dao.query(Blog.class, cri, pager);
-
-        List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
-        for (Blog blog : blogs) {
-            Map<String, Object> blogMap = new HashMap<String, Object>();
+        List<Blog> blogList = dao.query(Blog.class, cri, pager);
+        List<Map<String, Object>> items = new ArrayList<>();
+        for (Blog blog : blogList) {
+            Map<String, Object> blogMap = new HashMap<>();
             String content = blog.getContent();
             Document doc = Jsoup.parse(content);
-            Elements imgs = doc.select("img");
-
-            if (!imgs.isEmpty()) {
-                //解析第一张图片
-                Element img = imgs.get(0);
+            Elements imgList = doc.select("img");
+            if (!imgList.isEmpty()) {
+                Element img = imgList.get(0);
                 String imgUrl = img.attr("src");
                 blogMap.put("imgUrl", imgUrl);
             }
@@ -100,17 +90,13 @@ public class IndexModule {
             blogMap.put("createTime", DateFormatUtils.format(blog.getCreateTime(), "yyyy-MM-dd"));
             blogMap.put("clickHit", blog.getClicks());
             blogMap.put("replyHit", blog.getReplys());
-            //查询typeId
-            Long typeId = blog.getTypeId();
-            Map<Long, String> blogTypes = (Map<Long, String>) servletContext.getAttribute("blogTypes");
-            String typeName = (String) blogTypes.get(typeId);
-            blogMap.put("typeId", typeId);
+            blogMap.put("typeId", blog.getTypeId());
+            String typeName = ((Map<Long, String>) servletContext.getAttribute("blogTypes")).get(blog.getTypeId());
             blogMap.put("typeName", typeName);
-
             items.add(blogMap);
         }
 
-        resultMap.put("blogs", items);
+        resultMap.put("blogList", items);
         resultMap.put("pageBar", PageUtil.getPageMap(pager.getPageNumber(), pager.getPageSize(), count));
         return resultMap;
     }
@@ -118,7 +104,7 @@ public class IndexModule {
     @At("/search")
     @Ok("jsp:web.blog.result")
     public Object search(@Param("q") String q, Integer pageNo) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("q", q);
         q = ParamsUtil.getString(q);
         pageNo = ParamsUtil.getInteger(pageNo, 1);

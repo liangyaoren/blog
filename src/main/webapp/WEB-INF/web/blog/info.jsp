@@ -1,6 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/common/head.jsp" %>
+<style type="text/css">
+    p img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
 <div class="col-md-8" style="margin-top: 25px;">
     <div class="row">
         <div class="col-md-12">

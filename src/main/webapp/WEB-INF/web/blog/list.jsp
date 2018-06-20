@@ -2,7 +2,7 @@
 <%@include file="/common/head.jsp" %>
 <div class="col-md-8">
 
-    <c:forEach items="${obj.data.blogs}" var="blog">
+    <c:forEach items="${obj.data.blogList}" var="blog">
         <div class="row blog_list">
             <div class="col-md-12">
                 <div class="row">

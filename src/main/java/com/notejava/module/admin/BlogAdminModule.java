@@ -1,10 +1,11 @@
 package com.notejava.module.admin;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.base.Strings;
+import com.notejava.bean.Blog;
+import com.notejava.bean.BlogType;
+import com.notejava.lucene.BlogIndex;
+import com.notejava.utils.PageUtil;
+import com.notejava.utils.ParamsUtil;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
 import org.nutz.dao.pager.Pager;
@@ -14,12 +15,10 @@ import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
 
-import com.google.common.base.Strings;
-import com.notejava.bean.Blog;
-import com.notejava.bean.BlogType;
-import com.notejava.lucene.BlogIndex;
-import com.notejava.utils.PageUtil;
-import com.notejava.utils.ParamsUtil;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @IocBean
 @At("admin/blog")
@@ -46,7 +45,6 @@ public class BlogAdminModule {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("blogs", blogs);
         resultMap.put("pageBar", PageUtil.getPageBar(pager.getPageNumber(), pager.getPageSize(), count));
-        //resultMap.put("pageBar", PageUtil.getPageMap(pager.getPageNumber(), pager.getPageSize(), count));
         return resultMap;
     }
 
@@ -77,7 +75,7 @@ public class BlogAdminModule {
         String keyWord = ParamsUtil.getString(map.get("keyWord"));
         String contentNoTag = ParamsUtil.getString(map.get("contentNoTag"));
 
-        Blog blog = null;
+        Blog blog;
         if (Strings.isNullOrEmpty(id)) {
             blog = new Blog();
             blog.setCreateTime(new Date());
