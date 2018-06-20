@@ -1,5 +1,6 @@
 package com.notejava.module.web;
 
+import com.google.common.collect.Lists;
 import com.notejava.bean.Blog;
 import com.notejava.lucene.BlogIndex;
 import com.notejava.utils.PageUtil;
@@ -78,12 +79,17 @@ public class IndexModule {
             Map<String, Object> blogMap = new HashMap<>();
             String content = blog.getContent();
             Document doc = Jsoup.parse(content);
-            Elements imgList = doc.select("img");
-            if (!imgList.isEmpty()) {
-                Element img = imgList.get(0);
-                String imgUrl = img.attr("src");
-                blogMap.put("imgUrl", imgUrl);
+            Elements imgElements = doc.select("img");
+            List<String> imgUrls = Lists.newArrayList();
+            if (!imgElements.isEmpty()) {
+                for (Element element : imgElements) {
+                    String imgUrl = element.attr("src");
+                    if (imgUrls.size() < 2){
+                        imgUrls.add(imgUrl);
+                    }
+                }
             }
+            blogMap.put("imgUrls", imgUrls);
             blogMap.put("id", blog.getId());
             blogMap.put("title", blog.getTitle());
             blogMap.put("summary", blog.getSummary());

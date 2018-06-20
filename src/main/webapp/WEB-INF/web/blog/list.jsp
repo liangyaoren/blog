@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/head.jsp" %>
+<style type="text/css">
+    p img {
+        max-width: 360px;
+        max-height: 200px;
+    }
+</style>
 <div class="col-md-8">
 
     <c:forEach items="${obj.data.blogList}" var="blog">
@@ -18,6 +24,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p>${blog.summary}...</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <c:forEach items="${blog.imgUrls}" var="imgUrl">
+                                <a href="${base}/blog/${blog.id}"><img src="${imgUrl}"></a>&nbsp;
+                            </c:forEach>
+                        </p>
                     </div>
                 </div>
             </div>
